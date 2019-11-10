@@ -11,7 +11,8 @@ func _process(delta):
 	self.move_and_collide(gravita*delta)
 
 func _physics_process(delta):
-	self.look_at(self.transform.origin-self.transform.basis.z.normalized(), -gravita.normalized())
+	#self.look_at(self.transform.origin-self.transform.basis.z.normalized(), -gravita.normalized())
+	pass
 
 func _input(event):
 	if event.is_action_pressed("ui_up"):
@@ -24,3 +25,7 @@ func _input(event):
 
 func _on_gravita_cambiata(grav: Vector3):
 	gravita = grav
+	var coeff_proiez_z = self.transform.basis.z.dot(Vector3(0,0,-1))
+	if abs(coeff_proiez_z) < 0.05:#Se il coefficiente è troppo vicino a zero, la matrice di trasformazione diventa instabile
+		coeff_proiez_z= -1
+	self.look_at_from_position(self.transform.origin, self.transform.origin+coeff_proiez_z*Vector3(0,0,1), -gravita)
