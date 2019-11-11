@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://2d ui/pulsante_riavvia_livello.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -741.0
+margin_bottom = -439.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 109.0
+margin_top = 91.0
+margin_right = 165.0
+margin_bottom = 111.0
+text = "Riavvia"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 31.0
+margin_right = 239.0
+margin_bottom = 123.0
+text = "Hai vinto!"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+[connection signal="pressed" from="Button" to="Label" method="_on_Button_pressed"]

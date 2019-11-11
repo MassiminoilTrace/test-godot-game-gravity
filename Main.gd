@@ -18,3 +18,7 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_accept"):
 		$"Gestore gravita globale".gira_gravita()
+
+func _on_Interruttore_pulsante_attivato(val):
+	var r = preload("res://2d ui/avviso_riavvia.tscn")
+	self.call_deferred("add_child", r.instance())
