@@ -1,36 +1,36 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://mesh gridmap/lampada.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://mesh gridmap/untitled.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://mesh gridmap/cubo.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://mesh gridmap/elemento angolare muri.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://mesh gridmap/griglia_metallo.obj" type="ArrayMesh" id=4]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 emission_enabled = true
 emission = Color( 0, 0.815686, 0.701961, 1 )
 emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="ConvexPolygonShape" id=1]
+[sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( 0, 2.02529, 0, 0, 1.60634, -0.5, 0.5, 1.60634, 0, 0, 2.02529, 0, 0.5, 1.60634, 0, 0, 1.60634, 0.5, 0, 2.02529, 0, 0, 1.60634, 0.5, -0.5, 1.60634, 0, 0, 2.02529, 0, -0.5, 1.60634, 0, 0, 1.60634, -0.5, 0.5, 1.60634, 0, 0, 1.60634, -0.5, 0, 1.60634, 0.5, -0.5, 1.60634, 0 )
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.65098, 0.65098, 0.65098, 1 )
-metallic_specular = 1.0
-roughness = 0.54
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, 2, -1, 1, 2, -1, -1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1, -1, 2, 1, -1, 0, 1, -1, 2, 1, -1, 0, 1, -1, 2, -1, -1, 0, -1, 1, 0, -1, -1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 2, -1, 1, 0, -1, 1, 2, 1, 1, 0, 1, -1, 2, -1, -1, 0, -1, 1, 2, -1, 1, 0, -1 )
 
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -1, 2, 1, -1, 0, 1, -1, 2, -1, -1, 0, -1, -1, 2, -1, -1, 0, -1, 1, 2, -1, 1, 0, -1, 1, 2, -1, 1, 0, -1, 1, 2, 1, 1, 0, 1, 1, 2, 1, 1, 0, 1, -1, 2, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 2, -1, 1, 2, -1, -1, 2, 1, 1, 2, 1 )
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 0.104971, 1 )
 
 [node name="Spatial" type="Spatial"]
 
 [node name="lampada" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="lampada"]
 
 [node name="CollisionShape" type="CollisionShape" parent="lampada/StaticBody"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="lampada"]
 omni_range = 5.95276
@@ -38,9 +38,25 @@ omni_range = 5.95276
 [node name="cubo" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29785, 0.0295312, 1.79702 )
 mesh = ExtResource( 2 )
-material/0 = SubResource( 4 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="cubo"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cubo/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
+
+[node name="elemento angolare muri" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22332, 0.926862, 0.729512 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="griglia_metallo" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92658, 1.40421, -1.70286 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="griglia_metallo"]
+
+[node name="CollisionShape" type="CollisionShape" parent="griglia_metallo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0848902, 0 )
+shape = SubResource( 4 )

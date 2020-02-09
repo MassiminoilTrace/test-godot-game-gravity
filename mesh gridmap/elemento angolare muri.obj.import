@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/elemento angolare muri.obj-c13aeecda1514074d5f22fde61437d71.mesh"
+
+[deps]
+
+files=[ "res://.import/elemento angolare muri.obj-c13aeecda1514074d5f22fde61437d71.mesh" ]
+
+source_file="res://mesh gridmap/elemento angolare muri.obj"
+dest_files=[ "res://.import/elemento angolare muri.obj-c13aeecda1514074d5f22fde61437d71.mesh", "res://.import/elemento angolare muri.obj-c13aeecda1514074d5f22fde61437d71.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

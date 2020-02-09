@@ -4,9 +4,8 @@ var mouse_catturato: bool = false
 
 
 
-
 func _ready():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
 	if event.is_action_pressed("cattura_mouse"):
@@ -16,8 +15,10 @@ func _input(event):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("gravita_sinistra"):
 		$"Gestore gravita globale".gira_gravita()
+	elif event.is_action_pressed("gravita_destra"):
+		$"Gestore gravita globale".gira_gravita_inverso()
 
 func _on_Interruttore_pulsante_attivato(val):
 	var r = preload("res://2d ui/avviso_riavvia.tscn")

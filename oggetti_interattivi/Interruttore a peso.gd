@@ -7,7 +7,8 @@ var conteggio_precedente: int = 0
 var conteggio:int = 0
 
 func _ready():
-	pass
+	$AnimationPlayer.play("non schiacciato")
+	emit_signal("pulsante_attivato", false)
 
 func anima():
 	if conteggio > 0 and conteggio_precedente <=0:
